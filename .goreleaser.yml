@@ -1,0 +1,14 @@
+builds:
+  - main: ./cmd/vault-plugin-auth-jwt-auto-roles/
+    env:
+      - CGO_ENABLED=0
+    mod_timestamp: '{{ .CommitTimestamp }}'
+    flags:
+      - -trimpath
+    ldflags:
+      - '-s -w -X {{ .ModulePath }}/pkg/version.Version=v{{ .Version }}'
+    goos:
+      - linux
+    goarch:
+      - amd64
+    binary: '{{ .ProjectName }}_v{{ .Version }}'
