@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/go-test/deep v1.1.0
-	github.com/hashicorp/vault-client-go v0.3.3
+	github.com/hashicorp/vault-client-go v0.4.1
 	github.com/hashicorp/vault/sdk v0.9.2
 )
 
