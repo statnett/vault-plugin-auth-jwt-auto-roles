@@ -6,11 +6,11 @@ on:
     types:
       - opened
       - edited
+      - synchronize
 
 jobs:
   trigger:
-    uses: statnett/workflows/.github/workflows/lint-pr.yml@main
+    uses: statnett/github-workflows/.github/workflows/lint-pr.yaml@main
     permissions:
-      contents: read
       pull-requests: write
       statuses: write

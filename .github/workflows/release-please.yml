@@ -5,10 +5,11 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   trigger:
-    uses: statnett/workflows/.github/workflows/release-please.yml@main
+    uses: statnett/github-workflows/.github/workflows/release-please.yaml@main
     secrets: inherit
     permissions:
       contents: write
