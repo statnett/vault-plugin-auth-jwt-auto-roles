@@ -54,7 +54,7 @@ require (
 	github.com/hashicorp/go-sockaddr v1.0.4 // indirect
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
 	github.com/hashicorp/golang-lru v1.0.2 // indirect
-	github.com/hashicorp/vault/api v1.9.2
+	github.com/hashicorp/vault/api v1.10.0
 	github.com/hashicorp/yamux v0.1.1 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.19 // indirect
