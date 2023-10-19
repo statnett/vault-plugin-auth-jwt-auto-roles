@@ -125,6 +125,8 @@ github.com/hashicorp/hcl v1.0.1-vault-5 h1:kI3hhbbyzr4dldA8UdTb7ZlVVlI2DACdCfz31
 github.com/hashicorp/hcl v1.0.1-vault-5/go.mod h1:XYhtn6ijBSAj6n4YqAaf7RBPS4I06AItNorpy+MoQNM=
 github.com/hashicorp/vault-client-go v0.4.1 h1:HgRghmvVEkCt8R0yhJZ0RxrUQrN/0W4KaLMW9IXi/N0=
 github.com/hashicorp/vault-client-go v0.4.1/go.mod h1:4tDw7Uhq5XOxS1fO+oMtotHL7j4sB9cp0T7U6m4FzDY=
+github.com/hashicorp/vault-client-go v0.4.2 h1:XeUXb5jnDuCUhC8HRpkdGPLh1XtzXmiOnF0mXEbARxI=
+github.com/hashicorp/vault-client-go v0.4.2/go.mod h1:4tDw7Uhq5XOxS1fO+oMtotHL7j4sB9cp0T7U6m4FzDY=
 github.com/hashicorp/vault/api v1.10.0 h1:/US7sIjWN6Imp4o/Rj1Ce2Nr5bki/AXi9vAW3p2tOJQ=
 github.com/hashicorp/vault/api v1.10.0/go.mod h1:jo5Y/ET+hNyz+JnKDt8XLAdKs+AM0G5W0Vp1IrFI8N8=
 github.com/hashicorp/vault/sdk v0.10.2 h1:0UEOLhFyoEMpb/r8H5qyOu58A/j35pncqiS/d+ORKYk=
