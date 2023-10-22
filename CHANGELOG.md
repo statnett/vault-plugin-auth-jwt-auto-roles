@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.2...v0.2.3) (2023-10-22)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/hashicorp/vault-client-go to v0.4.2 ([#28](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/28)) ([f43ba80](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/f43ba806b167815bdd8d83f79f3e6f2a91280647))
+
 ## [0.2.2](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.1...v0.2.2) (2023-10-11)
 
 
