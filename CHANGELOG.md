@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.3...v0.2.4) (2023-10-25)
+
+
+### Bug Fixes
+
+* **deps:** bump google.golang.org/grpc from 1.57.0 to 1.57.1 ([#30](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/30)) ([936bdec](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/936bdec14d2fa25c3d81a2fd9dee8957f3fa4cdc))
+
 ## [0.2.3](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.2...v0.2.3) (2023-10-22)
 
 
