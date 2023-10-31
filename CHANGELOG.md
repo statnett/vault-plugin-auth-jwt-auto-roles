@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.4...v0.2.5) (2023-10-31)
+
+
+### Bug Fixes
+
+* **deps:** bump github.com/docker/docker from 24.0.5+incompatible to 24.0.7+incompatible ([#32](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/32)) ([c989031](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/c98903162970f1adcbc4c43f41817c454dac89d5))
+
 ## [0.2.4](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.3...v0.2.4) (2023-10-25)
 
 
