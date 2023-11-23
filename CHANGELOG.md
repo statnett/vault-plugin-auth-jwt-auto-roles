@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.6](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.5...v0.2.6) (2023-11-23)
+
+
+### Bug Fixes
+
+* **deps:** bump github.com/go-jose/go-jose/v3 from 3.0.0 to 3.0.1 ([#36](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/36)) ([ab03321](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/ab03321b2801a4932f3bd0a7d3c7e52634c65f58))
+* **deps:** update module github.com/golang-jwt/jwt/v5 to v5.1.0 ([#34](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/34)) ([a31ad02](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/a31ad02c41aa69b898cf15c63003419c25e473e6))
+
 ## [0.2.5](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.4...v0.2.5) (2023-10-31)
 
 
