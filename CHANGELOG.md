@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.8](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.7...v0.2.8) (2023-12-04)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/hashicorp/go-hclog to v1.6.1 ([#40](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/40)) ([2ff8a39](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/2ff8a39f36e08d80ef0eb0398da6e60d28f60cf1))
+
 ## [0.2.7](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.6...v0.2.7) (2023-12-02)
 
 
