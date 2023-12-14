@@ -25,7 +25,7 @@ jobs:
           args: release --snapshot
 
       - name: Publish Snapshots
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ github.event.inputs.publish == 'true' }}
         with:
           name: snapshots-${{ github.sha }}
