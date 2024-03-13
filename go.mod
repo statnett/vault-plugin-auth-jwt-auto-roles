@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/go-test/deep v1.1.0
 	github.com/hashicorp/vault-client-go v0.4.3
-	github.com/hashicorp/vault/sdk v0.11.0
+	github.com/hashicorp/vault/sdk v0.11.1
 )
 
 require github.com/joshlf/go-acl v0.0.0-20200411065538-eae00ae38531 // indirect
