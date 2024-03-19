@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.12](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.11...v0.2.12) (2024-03-19)
+
+
+### Features
+
+* ability to set JWT claim used for alias ([#60](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/60)) ([c03c9c9](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/c03c9c95363d18d2a33295b4b1feef0ce8d23ee0))
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/hashicorp/vault/api to v1.12.1 ([#56](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/56)) ([79c2a57](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/79c2a57eeaa1380904f3f5381c0ac54b9f5e05f4))
+* **deps:** update module github.com/hashicorp/vault/api to v1.12.2 ([#61](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/61)) ([f65b4e9](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/f65b4e9145626967809483e4ea854abef5b413ab))
+* **deps:** update module github.com/hashicorp/vault/sdk to v0.11.1 ([#57](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/57)) ([b6f5203](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/b6f5203448796b0cecf88169e948d7a10f8eaafb))
+
 ## [0.2.11](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.10...v0.2.11) (2024-03-12)
 
 
