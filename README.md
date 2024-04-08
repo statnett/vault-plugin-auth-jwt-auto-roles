@@ -72,3 +72,6 @@ The plugin could be configured with policies directly, instead of role names,
 and not rely on the builtin _jwt_ plugin for token verification. Although
 simpler to configure, security guarantees will no longer be delegated to
 HashiCorp.
+
+There is a also [an upstream issue](https://github.com/hashicorp/vault/issues/23279)
+to get this implemented in the official jwt plugin, obsoleting this plugin.
