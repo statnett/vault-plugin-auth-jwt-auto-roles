@@ -46,11 +46,12 @@ all its roles and their bound claims:
 
 `vault write auth/jwt-auto-roles/config @config.json`
 
-```json
+```json5
 // config.json
 {
   "jwt_auth_host": "https://vault.org.com",
   "jwt_auth_path": "jwt",
+  "user_claim": "user@example.com", // optional, generated based on policies and namespace otherwise
   "roles": {
     "role-a": {
       "project_path": ["foo/bar"]
