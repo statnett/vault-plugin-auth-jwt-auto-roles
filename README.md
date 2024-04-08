@@ -74,4 +74,4 @@ simpler to configure, security guarantees will no longer be delegated to
 HashiCorp.
 
 There is a also [an upstream issue](https://github.com/hashicorp/vault/issues/23279)
-to get this implemented in the official _jwt_ plugin, obsoleting this plugin.
+to get this implemented in the official [_jwt_ plugin](https://github.com/hashicorp/vault-plugin-auth-jwt), obsoleting this plugin.
