@@ -51,7 +51,7 @@ all its roles and their bound claims:
 {
   "jwt_auth_host": "https://vault.org.com",
   "jwt_auth_path": "jwt",
-  "user_claim": "user@example.com", // optional, generated based on policies and namespace otherwise
+  "user_claim": "user_email", // optional, generated based on policies and namespace otherwise
   "roles": {
     "role-a": {
       "project_path": ["foo/bar"]
