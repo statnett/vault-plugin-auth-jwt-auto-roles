@@ -19,7 +19,7 @@ access, with the JWT as the sole login parameter.
 ## Working Details
 
 The plugin currently relies on the builtin _jwt_ plugin for JWT verification and
-policy configuration. It simply determine the roles matching an incoming JWT's
+policy configuration. It simply determines the roles matching an incoming JWT's
 claims, tries to login to a mount of the builtin _jwt_ plugin for each role, and
 grants access to the union of policies returned by the builtin _jwt_ plugin
 mount.
