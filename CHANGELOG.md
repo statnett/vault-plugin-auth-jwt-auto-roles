@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.14](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.13...v0.2.14) (2024-06-26)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/go-test/deep to v1.1.1 ([#76](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/76)) ([f4255b3](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/f4255b3b48db179a539006f78a532dde35593ba8))
+* **deps:** update module github.com/hashicorp/vault/api to v1.14.0 ([#72](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/72)) ([e72ab2c](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/e72ab2c39d5c7d2141d4765bf6bfb13825c86162))
+
 ## [0.2.13](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.12...v0.2.13) (2024-04-21)
 
 
