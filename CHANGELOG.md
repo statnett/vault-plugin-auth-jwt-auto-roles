@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.14](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.13...v0.2.14) (2024-07-22)
+
+
+### Features
+
+* dynamically fetch roles ([#78](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/78)) ([1638a16](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/1638a161b4f833f1aa0d8b28e91e54c8ae14df56))
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/go-test/deep to v1.1.1 ([#76](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/76)) ([f4255b3](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/f4255b3b48db179a539006f78a532dde35593ba8))
+* **deps:** update module github.com/hashicorp/vault/api to v1.14.0 ([#72](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/72)) ([e72ab2c](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/e72ab2c39d5c7d2141d4765bf6bfb13825c86162))
+* **deps:** update module github.com/hashicorp/vault/sdk to v0.13.0 ([#80](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/80)) ([0c90158](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/0c90158f4467731b7162ac53444cb15d4f848249))
+
 ## [0.2.13](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.12...v0.2.13) (2024-04-21)
 
 
