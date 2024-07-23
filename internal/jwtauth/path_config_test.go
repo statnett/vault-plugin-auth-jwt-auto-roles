@@ -52,7 +52,7 @@ func TestConfig_WriteWithToken(t *testing.T) {
 	delete(configData, "roles")
 
 	backend, storage := createTestBackend(t)
-	var roleClient fakeRoleFetcher = func(_ context.Context, vaultToken string) (map[string]any, error) {
+	var roleClient fakeRoleFetcher = func(_ context.Context, config *jwtAutoRolesConfig, vaultToken string) (map[string]any, error) {
 		return roles, nil
 	}
 	backend.roleClient = roleClient
