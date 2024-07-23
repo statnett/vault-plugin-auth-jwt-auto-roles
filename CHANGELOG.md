@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.16](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.15...v0.2.16) (2024-07-23)
+
+
+### Bug Fixes
+
+* clear cached clients on reset ([#83](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/83)) ([96a9adf](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/96a9adf5367878d7c98bd6a5743f1268616eac15))
+
 ## [0.2.15](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.14...v0.2.15) (2024-07-23)
 
 
