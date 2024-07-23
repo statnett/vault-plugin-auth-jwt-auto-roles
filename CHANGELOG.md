@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.15](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.14...v0.2.15) (2024-07-23)
+
+
+### Features
+
+* remove custom timeout ([#81](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/81)) ([105067c](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/105067c236257c2dbb936f8fca688648175dbe66))
+
 ## [0.2.14](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.13...v0.2.14) (2024-07-22)
 
 
