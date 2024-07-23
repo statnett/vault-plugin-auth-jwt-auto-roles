@@ -45,7 +45,7 @@ func TestLogin_Write(t *testing.T) {
 		t.Fatalf("err:%s resp:%#v\n", err, resp)
 	}
 
-	var policyClient fakePolicyFetcher = func(_ context.Context, request schema.JwtLoginRequest) ([]string, error) {
+	var policyClient fakePolicyFetcher = func(_ context.Context, _ *jwtAutoRolesConfig, request schema.JwtLoginRequest) ([]string, error) {
 		return []string{request.Role + "-policy"}, nil
 	}
 	backend.policyClient = policyClient
@@ -123,8 +123,8 @@ func TestLogin_Write(t *testing.T) {
 	}
 }
 
-type fakePolicyFetcher func(context.Context, schema.JwtLoginRequest) ([]string, error)
+type fakePolicyFetcher func(context.Context, *jwtAutoRolesConfig, schema.JwtLoginRequest) ([]string, error)
 
-func (c fakePolicyFetcher) policies(ctx context.Context, request schema.JwtLoginRequest) ([]string, error) {
-	return c(ctx, request)
+func (c fakePolicyFetcher) policies(ctx context.Context, config *jwtAutoRolesConfig, request schema.JwtLoginRequest) ([]string, error) {
+	return c(ctx, config, request)
 }

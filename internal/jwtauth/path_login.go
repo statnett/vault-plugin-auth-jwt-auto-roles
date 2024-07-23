@@ -97,14 +97,9 @@ func (b *jwtAutoRolesAuthBackend) pathLogin(
 func (b *jwtAutoRolesAuthBackend) policies(
 	ctx context.Context, config *jwtAutoRolesConfig, roles []string, token string,
 ) ([]string, error) {
-	client, err := b.policyFetcher(config)
-	if err != nil {
-		return nil, err
-	}
-
 	policies := map[string]struct{}{}
 	for _, role := range roles {
-		rolePolicies, err := client.policies(ctx, schema.JwtLoginRequest{
+		rolePolicies, err := b.policyClient.policies(ctx, config, schema.JwtLoginRequest{
 			Jwt:  token,
 			Role: role,
 		})
