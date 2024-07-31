@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.16...v0.3.0) (2024-07-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* fail when unable to login to any roles ([#88](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/88))
+
+### Features
+
+* fail when unable to login to any roles ([#88](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/88)) ([9bf3f87](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/9bf3f87893af77f0c2fbab71dcb7b683c292a2d9))
+
 ## [0.2.16](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.2.15...v0.2.16) (2024-07-23)
 
 
