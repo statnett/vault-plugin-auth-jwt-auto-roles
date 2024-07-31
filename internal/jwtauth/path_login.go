@@ -79,6 +79,10 @@ func (b *jwtAutoRolesAuthBackend) pathLogin(
 		return logical.ErrorResponse(err.Error()), nil
 	}
 
+	if len(policies) == 0 {
+		return logical.ErrorResponse("unable to log into any role"), nil
+	}
+
 	return &logical.Response{
 		Auth: &logical.Auth{
 			Alias:    alias,

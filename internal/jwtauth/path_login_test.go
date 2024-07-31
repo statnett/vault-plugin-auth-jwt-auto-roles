@@ -58,6 +58,7 @@ func TestLogin_Write(t *testing.T) {
 	for i, tt := range []struct {
 		claims   jwt.MapClaims
 		policies []string
+		err      string
 	}{
 		{
 			claims: jwt.MapClaims{
@@ -78,6 +79,12 @@ func TestLogin_Write(t *testing.T) {
 			},
 			policies: []string{"baz-policy"},
 		},
+		{
+			claims: jwt.MapClaims{
+				"no_role_has_this": "baz",
+			},
+			err: "unable to log into any role",
+		},
 	} {
 		token, err := jwt.NewWithClaims(jwt.SigningMethodPS512, tt.claims).SignedString(privateKey)
 		if err != nil {
@@ -94,8 +101,19 @@ func TestLogin_Write(t *testing.T) {
 		}
 
 		resp, err = backend.HandleRequest(context.Background(), req)
-		if err != nil || (resp != nil && resp.IsError()) {
-			t.Fatalf("err:%s resp:%#v\n", err, resp)
+		if err != nil {
+			t.Fatalf("unable to handle request: %s", err.Error())
+		}
+
+		if tt.err != "" {
+			respErr := resp.Error()
+			if respErr == nil {
+				t.Fatalf("Test case %v failed. Expected to fail with err '%s', but did not.", i, tt.err)
+			}
+			if diff := cmp.Diff(tt.err, respErr.Error()); diff != "" {
+				t.Fatalf("Test case %v failed with diff:\n%s", i, diff)
+			}
+			continue
 		}
 
 		opt := cmpopts.SortSlices(func(a, b string) bool { return a < b })
