@@ -39,15 +39,18 @@ type jwtAutoRolesAuthBackend struct {
 }
 
 type policyFetcher interface {
-	policies(ctx context.Context, request schema.JwtLoginRequest) ([]string, error)
+	policies(ctx context.Context, config *jwtAutoRolesConfig, request schema.JwtLoginRequest) ([]string, error)
 }
 
 type roleFetcher interface {
-	roles(ctx context.Context, vaultToken string) (map[string]any, error)
+	roles(ctx context.Context, config *jwtAutoRolesConfig, vaultToken string) (map[string]any, error)
 }
 
 func backend(_ *logical.BackendConfig) *jwtAutoRolesAuthBackend {
-	var backend jwtAutoRolesAuthBackend
+	backend := jwtAutoRolesAuthBackend{
+		policyClient: &vaultClient{},
+		roleClient:   &vaultClient{},
+	}
 	backend.Backend = &framework.Backend{
 		BackendType: logical.TypeCredential,
 		Help:        backendHelp,
@@ -69,8 +72,6 @@ func (b *jwtAutoRolesAuthBackend) reset() {
 	defer b.l.Unlock()
 	b.cachedConfig = nil
 	b.roleIndex = nil
-	b.roleClient = nil
-	b.policyClient = nil
 }
 
 func (b *jwtAutoRolesAuthBackend) getRoleIndex(config *jwtAutoRolesConfig) (*roleIndex, error) {
@@ -90,57 +91,8 @@ func (b *jwtAutoRolesAuthBackend) getRoleIndex(config *jwtAutoRolesConfig) (*rol
 	return index, nil
 }
 
-func (b *jwtAutoRolesAuthBackend) policyFetcher(config *jwtAutoRolesConfig) (policyFetcher, error) {
-	b.l.Lock()
-	defer b.l.Unlock()
-
-	if b.policyClient != nil {
-		return b.policyClient, nil
-	}
-
-	client, err := vault.New(
-		vault.WithAddress(config.JWTAuthHost),
-	)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create vault client: %w", err)
-	}
-
-	b.policyClient = &vaultClient{
-		Client:    client,
-		mountPath: config.JWTAuthPath,
-	}
-	return b.policyClient, nil
-}
-
-func (b *jwtAutoRolesAuthBackend) roleFetcher(config *jwtAutoRolesConfig) (roleFetcher, error) {
-	b.l.Lock()
-	defer b.l.Unlock()
-
-	if b.roleClient != nil {
-		return b.roleClient, nil
-	}
-
-	client, err := vault.New(
-		vault.WithAddress(config.JWTAuthHost),
-	)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create vault client: %w", err)
-	}
-
-	b.roleClient = &vaultClient{
-		Client:    client,
-		mountPath: config.JWTAuthPath,
-	}
-	return b.roleClient, nil
-}
-
 func (b *jwtAutoRolesAuthBackend) fetchRolesInto(ctx context.Context, config *jwtAutoRolesConfig, vaultToken string) error {
-	client, err := b.roleFetcher(config)
-	if err != nil {
-		return err
-	}
-
-	roles, err := client.roles(ctx, vaultToken)
+	roles, err := b.roleClient.roles(ctx, config, vaultToken)
 	if err != nil {
 		return err
 	}
@@ -149,29 +101,40 @@ func (b *jwtAutoRolesAuthBackend) fetchRolesInto(ctx context.Context, config *jw
 	return nil
 }
 
-type vaultClient struct {
-	*vault.Client
-	mountPath string
-}
+type vaultClient struct{}
 
-func (c *vaultClient) policies(ctx context.Context, request schema.JwtLoginRequest) ([]string, error) {
-	r, err := c.Client.Auth.JwtLogin(ctx, request, vault.WithMountPath(c.mountPath))
+func (_ *vaultClient) policies(ctx context.Context, config *jwtAutoRolesConfig, request schema.JwtLoginRequest) ([]string, error) {
+	client, err := vault.New(
+		vault.WithAddress(config.JWTAuthHost),
+	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create vault client: %w", err)
+	}
+
+	r, err := client.Auth.JwtLogin(ctx, request, vault.WithMountPath(config.JWTAuthPath))
 	if err != nil {
 		return nil, fmt.Errorf("vault error: %w", err)
 	}
 	return r.Auth.Policies, nil
 }
 
-func (c *vaultClient) roles(ctx context.Context, vaultToken string) (map[string]any, error) {
-	opts := []vault.RequestOption{vault.WithMountPath(c.mountPath), vault.WithToken(vaultToken)}
-	roles, err := c.Client.Auth.JwtListRoles(ctx, opts...)
+func (_ *vaultClient) roles(ctx context.Context, config *jwtAutoRolesConfig, vaultToken string) (map[string]any, error) {
+	client, err := vault.New(
+		vault.WithAddress(config.JWTAuthHost),
+	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create vault client: %w", err)
+	}
+
+	opts := []vault.RequestOption{vault.WithMountPath(config.JWTAuthPath), vault.WithToken(vaultToken)}
+	roles, err := client.Auth.JwtListRoles(ctx, opts...)
 	if err != nil {
 		return nil, err
 	}
 
 	roleConfig := make(map[string]any, len(roles.Data.Keys))
 	for _, name := range roles.Data.Keys {
-		role, err := c.Client.Auth.JwtReadRole(ctx, name, opts...)
+		role, err := client.Auth.JwtReadRole(ctx, name, opts...)
 		if err != nil {
 			return nil, err
 		}

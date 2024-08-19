@@ -31,7 +31,7 @@ func TestConfigRolesRefresh_Write(t *testing.T) {
 			"project_path": []any{"foo", "bar"},
 		},
 	}
-	var roleClient fakeRoleFetcher = func(_ context.Context, vaultToken string) (map[string]any, error) {
+	var roleClient fakeRoleFetcher = func(_ context.Context, _ *jwtAutoRolesConfig, vaultToken string) (map[string]any, error) {
 		return newRoles, nil
 	}
 	backend.roleClient = roleClient
@@ -60,8 +60,8 @@ func TestConfigRolesRefresh_Write(t *testing.T) {
 	}
 }
 
-type fakeRoleFetcher func(ctx context.Context, vaultToken string) (map[string]any, error)
+type fakeRoleFetcher func(context.Context, *jwtAutoRolesConfig, string) (map[string]any, error)
 
-func (c fakeRoleFetcher) roles(ctx context.Context, vaultToken string) (map[string]any, error) {
-	return c(ctx, vaultToken)
+func (c fakeRoleFetcher) roles(ctx context.Context, config *jwtAutoRolesConfig, vaultToken string) (map[string]any, error) {
+	return c(ctx, config, vaultToken)
 }
