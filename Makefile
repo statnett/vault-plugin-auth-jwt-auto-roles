@@ -1,7 +1,7 @@
 all: start
 
-GOFUMPT_VERSION ?= v0.5.0
-GORELEASER_VERSION ?= 1.20.0
+GOFUMPT_VERSION ?= v0.7.0
+GORELEASER_VERSION ?= 2.4.8
 
 .PHONY: fmt
 fmt:
@@ -15,7 +15,7 @@ test:
 .PHONY: build
 build:
 	mkdir -p build/plugins
-	go run github.com/goreleaser/goreleaser@v$(GORELEASER_VERSION) \
+	go run github.com/goreleaser/goreleaser/v2@v$(GORELEASER_VERSION) \
 		build --clean --snapshot --single-target \
 		--output build/plugins/vault-plugin-auth-jwt-auto-roles
 
