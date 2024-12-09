@@ -2,10 +2,9 @@ package jwtauth
 
 import (
 	"reflect"
+	"slices"
 	"strings"
 	"testing"
-
-	"slices"
 )
 
 func TestRoleIndexer(t *testing.T) {
