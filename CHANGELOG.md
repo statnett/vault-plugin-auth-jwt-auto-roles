@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.3.1...v0.3.2) (2024-12-09)
+
+
+### Bug Fixes
+
+* various upgrades ([#96](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/96)) ([b9879b3](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/b9879b3b977dbc8878cd6ba3a8be95456482fb9d))
+
 ## [0.3.1](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.3.0...v0.3.1) (2024-09-10)
 
 
