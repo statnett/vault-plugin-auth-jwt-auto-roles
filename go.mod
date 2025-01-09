@@ -2,8 +2,6 @@ module github.com/statnett/vault-plugin-auth-jwt-auto-roles
 
 go 1.23.3
 
-toolchain go1.23.4
-
 require (
 	github.com/go-test/deep v1.1.1
 	github.com/hashicorp/vault-client-go v0.4.3
