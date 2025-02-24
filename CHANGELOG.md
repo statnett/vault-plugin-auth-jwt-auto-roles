@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.4](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.3.3...v0.3.4) (2025-02-24)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/google/go-cmp to v0.7.0 ([#103](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/103)) ([ba5303c](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/ba5303cc41da91813ece52f47ceba262bfe62787))
+* **deps:** update module github.com/hashicorp/vault/api to v1.16.0 ([#101](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/101)) ([d84abe9](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/d84abe939fa9589e56c7700af0fbbfe0964b7ce7))
+* **deps:** update module github.com/hashicorp/vault/sdk to v0.15.0 ([#102](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/102)) ([21dc29e](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/21dc29e5c3600177e736630e458dfa5b325dcb2a))
+
 ## [0.3.3](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.3.2...v0.3.3) (2025-01-09)
 
 
