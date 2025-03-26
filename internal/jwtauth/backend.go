@@ -103,7 +103,7 @@ func (b *jwtAutoRolesAuthBackend) fetchRolesInto(ctx context.Context, config *jw
 
 type vaultClient struct{}
 
-func (_ *vaultClient) policies(ctx context.Context, config *jwtAutoRolesConfig, request schema.JwtLoginRequest) ([]string, error) {
+func (*vaultClient) policies(ctx context.Context, config *jwtAutoRolesConfig, request schema.JwtLoginRequest) ([]string, error) {
 	client, err := vault.New(
 		vault.WithAddress(config.JWTAuthHost),
 	)
@@ -118,7 +118,7 @@ func (_ *vaultClient) policies(ctx context.Context, config *jwtAutoRolesConfig, 
 	return r.Auth.Policies, nil
 }
 
-func (_ *vaultClient) roles(ctx context.Context, config *jwtAutoRolesConfig, vaultToken string) (map[string]any, error) {
+func (*vaultClient) roles(ctx context.Context, config *jwtAutoRolesConfig, vaultToken string) (map[string]any, error) {
 	client, err := vault.New(
 		vault.WithAddress(config.JWTAuthHost),
 	)
