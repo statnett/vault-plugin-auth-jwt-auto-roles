@@ -82,7 +82,7 @@ func TestRoleIndexer(t *testing.T) {
 
 	index, err := createRoleIndex(&config)
 	if err != nil {
-		t.Fatalf(err.Error())
+		t.Fatal(err.Error())
 	}
 
 	for i, tt := range []struct {
