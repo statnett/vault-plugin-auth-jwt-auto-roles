@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.6](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.3.5...v0.3.6) (2025-06-07)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/hashicorp/vault/api to v1.20.0 ([#123](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/issues/123)) ([7af0d3a](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/commit/7af0d3aef81681a6a7579140758e4bb7394a4b3d))
+
 ## [0.3.5](https://github.com/statnett/vault-plugin-auth-jwt-auto-roles/compare/v0.3.4...v0.3.5) (2025-03-21)
 
 
