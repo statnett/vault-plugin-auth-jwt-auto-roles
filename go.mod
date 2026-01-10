@@ -5,7 +5,7 @@ go 1.25.0
 require (
 	github.com/go-test/deep v1.1.1
 	github.com/hashicorp/vault-client-go v0.4.3
-	github.com/hashicorp/vault/sdk v0.20.0
+	github.com/hashicorp/vault/sdk v0.21.0
 )
 
 require (
