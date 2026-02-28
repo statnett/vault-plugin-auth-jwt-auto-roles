@@ -3,6 +3,7 @@ package jwtauth
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	jwt "github.com/golang-jwt/jwt/v5"
@@ -74,13 +75,17 @@ func (b *jwtAutoRolesAuthBackend) pathLogin(
 	}
 
 	roles := roleIndex.claimsRoles(claims)
+	if len(roles) == 0 {
+		return logical.ErrorResponse("unable to log into any role: no roles matched jwt claims"), nil
+	}
+
 	policies, err := b.policies(ctx, config, roles, token)
 	if err != nil {
 		return logical.ErrorResponse(err.Error()), nil
 	}
 
 	if len(policies) == 0 {
-		return logical.ErrorResponse("unable to log into any role"), nil
+		return logical.ErrorResponse("unable to log into any role: roles matched claims but all upstream logins failed"), nil
 	}
 
 	return &logical.Response{
@@ -98,20 +103,24 @@ func (b *jwtAutoRolesAuthBackend) policies(
 	ctx context.Context, config *jwtAutoRolesConfig, roles []string, token string,
 ) ([]string, error) {
 	policies := map[string]struct{}{}
+	var errs []string
 	for _, role := range roles {
 		rolePolicies, err := b.policyClient.policies(ctx, config, schema.JwtLoginRequest{
 			Jwt:  token,
 			Role: role,
 		})
 		if err != nil {
+			errs = append(errs, fmt.Sprintf("role %q: %s", role, err))
 			continue
-			// TODO: return error if non-403
-			// return nil, err
 		}
 
 		for _, p := range rolePolicies {
 			policies[p] = struct{}{}
 		}
+	}
+
+	if len(policies) == 0 && len(errs) > 0 {
+		return nil, fmt.Errorf("all upstream role logins failed: %s", strings.Join(errs, "; "))
 	}
 
 	r := make([]string, 0, len(policies))
