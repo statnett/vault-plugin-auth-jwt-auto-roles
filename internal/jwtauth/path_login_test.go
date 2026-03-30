@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/rand"
 	"crypto/rsa"
+	"errors"
 	"testing"
 
 	jwt "github.com/golang-jwt/jwt/v5"
@@ -83,7 +84,7 @@ func TestLogin_Write(t *testing.T) {
 			claims: jwt.MapClaims{
 				"no_role_has_this": "baz",
 			},
-			err: "unable to log into any role",
+			err: "unable to log into any role: no roles matched jwt claims",
 		},
 	} {
 		token, err := jwt.NewWithClaims(jwt.SigningMethodPS512, tt.claims).SignedString(privateKey)
@@ -127,4 +128,50 @@ type fakePolicyFetcher func(context.Context, *jwtAutoRolesConfig, schema.JwtLogi
 
 func (c fakePolicyFetcher) policies(ctx context.Context, config *jwtAutoRolesConfig, request schema.JwtLoginRequest) ([]string, error) {
 	return c(ctx, config, request)
+}
+
+func TestLogin_AllUpstreamFail(t *testing.T) {
+	t.Parallel()
+	backend, storage := createTestBackend(t)
+
+	configData := map[string]any{
+		"roles": map[string]any{
+			"foo": map[string]any{"project_path": []any{"foo"}},
+		},
+		"jwt_auth_host": "http://localhost:8200",
+		"jwt_auth_path": "jwt",
+	}
+	req := &logical.Request{Operation: logical.UpdateOperation, Path: "config", Storage: storage, Data: configData}
+	resp, err := backend.HandleRequest(context.Background(), req)
+	if err != nil || (resp != nil && resp.IsError()) {
+		t.Fatalf("err:%s resp:%#v\n", err, resp)
+	}
+
+	backend.policyClient = fakePolicyFetcher(func(_ context.Context, _ *jwtAutoRolesConfig, _ schema.JwtLoginRequest) ([]string, error) {
+		return nil, errors.New("permission denied")
+	})
+
+	privateKey, err := rsa.GenerateKey(rand.Reader, 2048)
+	if err != nil {
+		t.Fatalf("unable to create private key: %s", err)
+	}
+	token, err := jwt.NewWithClaims(jwt.SigningMethodPS512, jwt.MapClaims{"project_path": "foo"}).SignedString(privateKey)
+	if err != nil {
+		t.Fatalf("unable to sign jwt: %s", err)
+	}
+
+	resp, err = backend.HandleRequest(context.Background(), &logical.Request{
+		Operation: logical.UpdateOperation,
+		Path:      "login",
+		Storage:   storage,
+		Data:      map[string]any{"jwt": token},
+	})
+	if err != nil {
+		t.Fatalf("unable to handle request: %s", err)
+	}
+
+	wantErr := `all upstream role logins failed: role "foo": permission denied`
+	if diff := cmp.Diff(wantErr, resp.Error().Error()); diff != "" {
+		t.Fatalf("unexpected error diff:\n%s", diff)
+	}
 }
