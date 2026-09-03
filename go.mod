@@ -1,6 +1,6 @@
 module github.com/statnett/vault-plugin-auth-jwt-auto-roles
 
-go 1.25.7
+go 1.26.0
 
 require (
 	github.com/go-test/deep v1.1.1
@@ -104,7 +104,7 @@ require (
 	github.com/ryanuber/go-glob v1.0.0 // indirect
 	github.com/stretchr/testify v1.11.1 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
-	golang.org/x/crypto v0.55.0 // indirect
+	golang.org/x/crypto v0.56.0 // indirect
 	golang.org/x/net v0.57.0 // indirect
 	golang.org/x/sys v0.47.0 // indirect
 	golang.org/x/text v0.41.0 // indirect
